@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Catalogue Jeux Vidéos</title>
+    <link rel="stylesheet" type="text/css"
+          href="../static/css/bootstrap.min.css"
+          th:href="@{css/bootstrap.min.css}"
+    />
+</head>
+<body>
+<div class="container mt-3">
+    <h3>Catalogue de jeux vidéos MDR</h3><br/>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th><th>Nom</th><th>Possesseur</th><th>Console</th><th>Prix</th><th>Nb joueurs max</th><th>Commentaires</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="p:${listProduits}">
+                <td th:text="${p.id}"></td>
+                <td th:text="${p.nom}"></td>
+                <td th:text="${p.possesseur}"></td>
+                <td th:text="${p.console}"></td>
+                <td th:text="${p.prix}"></td>
+                <td th:text="${p.nb_joueurs_max}"></td>
+                <td th:text="${p.commentaires}"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="container">
+    <ul class="pagination">
+        <li th:class="${pageCourante}==${status.index}?'page-item active':''" th:each="page,status:${tabPages}" class="page-item">
+            <a th:href="@{index(page=${status.index}, size=${size})}" th:text="${status.index}" class="page-link"></a>
+        </li>
+    </ul>
+</div>
+</body>
+</html>
