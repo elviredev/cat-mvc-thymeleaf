@@ -5,7 +5,7 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "jeux_video")
-public class Produit implements Serializable {
+public class Jeu implements Serializable {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String nom;
@@ -16,11 +16,11 @@ public class Produit implements Serializable {
     private String commentaires;
 
     // constructeurs
-    public Produit() {
+    public Jeu() {
         super();
     }
 
-    public Produit(String nom, String possesseur, String console, int prix, int nb_joueurs_max, String commentaires) {
+    public Jeu(String nom, String possesseur, String console, int prix, int nb_joueurs_max, String commentaires) {
         super();
         this.nom = nom;
         this.possesseur = possesseur;
@@ -29,13 +29,6 @@ public class Produit implements Serializable {
         this.nb_joueurs_max = nb_joueurs_max;
         this.commentaires = commentaires;
     }
-
-    /*public Produit(String designation, double price, int quantity) {
-        super();
-        this.designation = designation;
-        this.price = price;
-        this.quantity = quantity;
-    }*/
 
     // getters/setters
 

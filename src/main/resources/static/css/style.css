@@ -1,0 +1,13 @@
+body {
+    margin: 0;
+    padding: 0;
+    /*background-image: url("https://mdn.mozillademos.org/files/6457/mdn_logo_only_color.png");*/
+    background: url('../images/bg-lego.jpg')no-repeat center fixed;
+    background-size: cover;
+ }
+
+ }
+.page-item.active .page-link {
+    background-color: red;
+ }
+
