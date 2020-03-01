@@ -7,9 +7,12 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import javax.validation.Valid;
 
 
 @Controller
@@ -37,5 +40,26 @@ public class JeuController {
     public String delete(int id, String mc, int page, int size){
         jeuRepository.deleteById(id);
         return "redirect:/index?page="+page+"&size="+size+"&mc="+mc;
+    }
+
+    @RequestMapping(value = "/form", method = RequestMethod.GET)
+    public String formJeu(Model model){
+        model.addAttribute("jeu", new Jeu());
+        return "formJeu";
+    }
+
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    public String save(Model model, @Valid Jeu jeu, BindingResult bindingResult){
+        if(bindingResult.hasErrors())
+            return "formJeu";
+        jeuRepository.save(jeu);
+        return "confirmation";
+    }
+
+    @RequestMapping(value = "/edit", method = RequestMethod.GET)
+    public String edit(Model model, int id){
+        Jeu jeu = jeuRepository.getOne(id);
+        model.addAttribute("jeu", jeu);
+        return "editJeu";
     }
 }

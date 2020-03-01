@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout">
+<head>
+    <meta charset="UTF-8" />
+    <title>Jeux Vidéos</title>
+    <link rel="stylesheet" type="text/css"
+          href="../static/css/bootstrap.min.css"
+          th:href="@{css/bootstrap.min.css}"
+    />
+    <link rel="stylesheet" type="text/css"
+          href="../static/css/style.css"
+          th:href="@{css/style.css}" />
+</head>
+<body>
+    <div layout:fragment="content" class="container mt-3">
+        <div class="card" style="width:34 rem;">
+            <div class="card-header text-white bg-dark">Nouveau Jeu Vidéo</div>
+            <div class="card-body">
+                <form th:action="@{save}" method="post">
+                    <div class="form-group">
+                        <label>Nom du jeu</label>
+                        <input type="text" class="form-control" name="nom" th:value="${jeu.nom}" />
+                        <span th:errors="${jeu.nom}"></span>
+                    </div>
+                    <div class="form-group">
+                        <label>Possesseur</label>
+                        <input type="text" class="form-control" name="possesseur" th:value="${jeu.possesseur}" />
+                        <span th:errors="${jeu.possesseur}"></span>
+                    </div>
+                    <div class="form-group">
+                        <label>Console</label>
+                        <input type="text" class="form-control" name="console" th:value="${jeu.console}" />
+                        <span th:errors="${jeu.console}"></span>
+                    </div>
+                    <div class="form-group">
+                        <label>Prix</label>
+                        <input type="text" class="form-control" name="prix" th:value="${jeu.prix}" />
+                        <span th:errors="${jeu.prix}"></span>
+                    </div>
+                    <div class="form-group">
+                        <label>Nb de joueurs max</label>
+                        <input type="text" class="form-control" name="nb_joueurs_max" th:value="${jeu.nb_joueurs_max}" />
+                        <span th:errors="${jeu.nb_joueurs_max}"></span>
+                    </div>
+                    <div class="form-group">
+                        <label>Commentaires</label>
+                        <textarea type="text" class="form-control" name="commentaires" th:value="${jeu.commentaires}"></textarea>
+                    </div>
+                    <div class="text-right">
+                        <button type="submit" class="btn btn-dark ">Enregistrer</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>

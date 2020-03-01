@@ -1,17 +1,27 @@
 package com.elv.catmvcthymeleaf.entities;
 
 import javax.persistence.*;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 @Entity
 @Table(name = "jeux_video")
 public class Jeu implements Serializable {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @NotNull
+    @Size(min = 4, max = 50)
     private String nom;
+    @NotNull
     private String possesseur;
+    @NotNull
     private String console;
+    @DecimalMin("1")
     private int prix;
+    @DecimalMin("1")
     private int nb_joueurs_max;
     private String commentaires;
 

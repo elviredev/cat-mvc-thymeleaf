@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout">
+<head>
+    <meta charset="UTF-8" />
+    <title>Jeux Vidéos</title>
+    <link rel="stylesheet" type="text/css"
+          href="../static/css/bootstrap.min.css"
+          th:href="@{css/bootstrap.min.css}"
+    />
+    <link rel="stylesheet" type="text/css"
+          href="../static/css/style.css"
+          th:href="@{css/style.css}" />
+</head>
+<body>
+    <div layout:fragment="content" class="container mt-3">
+        <div class="card" style="width:34 rem;">
+            <div class="card-header text-white bg-dark">Confirmation</div>
+            <div class="card-body">
+                <form th:action="@{save}" method="post">
+                    <div class="form-group">
+                        <label>Id:</label>
+                        <label th:text="${jeu.id}"></label>
+                    </div>
+                    <div class="form-group">
+                        <label>Nom du jeu:</label>
+                        <label th:text="${jeu.nom}"></label>
+                    </div>
+                    <div class="form-group">
+                        <label>Possesseur:</label>
+                        <label th:text="${jeu.possesseur}"></label>
+                    </div>
+                    <div class="form-group">
+                        <label>Console:</label>
+                        <label th:text="${jeu.console}"></label>
+                    </div>
+                    <div class="form-group">
+                        <label>Prix:</label>
+                        <label th:text="${jeu.prix}"></label>
+                    </div>
+                    <div class="form-group">
+                        <label>Nb de joueurs max:</label>
+                        <label th:text="${jeu.nb_joueurs_max}"></label>
+                    </div>
+                    <div class="form-group">
+                        <label>Commentaires:</label>
+                        <label th:text="${jeu.commentaires}"></label>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>

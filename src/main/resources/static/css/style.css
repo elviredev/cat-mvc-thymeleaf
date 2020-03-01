@@ -6,8 +6,32 @@ body {
     background-size: cover;
  }
 
- }
 .page-item.active .page-link {
-    background-color: red;
+    background-color: #00183C;
+    border-color: #00183C;
  }
+
+.colorError {
+    color: #ff7b00;
+}
+
+.color-blueLight {
+    color: #B8E9FA;
+}
+
+footer {
+    /*position: fixed;*/
+    height: 50px;
+    /*bottom: 0;*/
+    /*width: 100%;*/
+
+}
+
+.bg-blueLight {
+    background-color: #B8E9FA;
+}
+
+.bg-blueDark {
+    background-color: #00183C;
+}
 
