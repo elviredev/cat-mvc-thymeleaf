@@ -20,7 +20,7 @@ public class JeuController {
     @Autowired
     private JeuRepository jeuRepository;
 
-    @RequestMapping(value = "/index")
+    @RequestMapping(value = "/user/index")
     public String index(Model model,
                         @RequestParam(name="page", defaultValue="0") int p,
                         @RequestParam(name="size", defaultValue="5") int s,
@@ -36,19 +36,19 @@ public class JeuController {
         return "jeux";
     }
 
-    @RequestMapping(value = "/delete", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/delete", method = RequestMethod.GET)
     public String delete(int id, String mc, int page, int size){
         jeuRepository.deleteById(id);
-        return "redirect:/index?page="+page+"&size="+size+"&mc="+mc;
+        return "redirect:/user/index?page="+page+"&size="+size+"&mc="+mc;
     }
 
-    @RequestMapping(value = "/form", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/form", method = RequestMethod.GET)
     public String formJeu(Model model){
         model.addAttribute("jeu", new Jeu());
         return "formJeu";
     }
 
-    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/save", method = RequestMethod.POST)
     public String save(Model model, @Valid Jeu jeu, BindingResult bindingResult){
         if(bindingResult.hasErrors())
             return "formJeu";
@@ -56,10 +56,20 @@ public class JeuController {
         return "confirmation";
     }
 
-    @RequestMapping(value = "/edit", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/edit", method = RequestMethod.GET)
     public String edit(Model model, int id){
         Jeu jeu = jeuRepository.getOne(id);
         model.addAttribute("jeu", jeu);
         return "editJeu";
+    }
+
+    @RequestMapping(value = "/")
+    public String home(){
+        return "redirect:/user/index";
+    }
+
+    @RequestMapping(value = "/403")
+    public String accessDenied(){
+        return "403";
     }
 }

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout">
+<head>
+    <meta charset="UTF-8" />
+    <title>Jeux Vidéos</title>
+    <link rel="stylesheet" type="text/css"
+          href="../static/css/bootstrap.min.css"
+          th:href="@{css/bootstrap.min.css}"
+    />
+    <link rel="stylesheet" type="text/css"
+          href="../static/css/style.css"
+          th:href="@{css/style.css}" />
+</head>
+<body>
+    <div layout:fragment="content" class="container mt-3">
+        <div class="card" style="width:34 rem;">
+            <div class="card-header text-white bg-dark">Message</div>
+            <div class="card-body">
+                <h3 class="colorError">Vous n'êtes pas autorisé(e) à accéder à cette page.</h3>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>

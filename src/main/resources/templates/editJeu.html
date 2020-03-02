@@ -18,7 +18,7 @@
         <div class="card" style="width:34 rem;">
             <div class="card-header text-white bg-dark">Nouveau Jeu Vidéo</div>
             <div class="card-body">
-                <form th:action="@{save}" method="post">
+                <form th:action="@{/admin/save}" method="post">
                     <div class="form-group">
                         <label>Id</label>
                         <input type="text" class="form-control" name="id" th:value="${jeu.id}" />

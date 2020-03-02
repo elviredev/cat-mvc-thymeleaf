@@ -16,7 +16,7 @@
 <body>
     <div layout:fragment="content">
         <div class="container mt-3">
-            <form th:action="@{index}" method="get">
+            <form th:action="@{/user/index}" method="get">
                 <div class="form-row">
                     <input type="text" name="mc" th:value="${mc}" placeholder="Nom du Jeu" class="form-control col-md-3" />
                     <button class="btn bg-blueDark text-white ml-2">Chercher</button>
@@ -41,9 +41,9 @@
                     <td th:text="${j.prix}"></td>
                     <td th:text="${j.nb_joueurs_max}"></td>
                     <td th:text="${j.commentaires}"></td>
-                    <td><a th:href="@{edit(id=${j.id})}" class="color-blueLight">Modif</a></td>
+                    <td><a th:href="@{/admin/edit(id=${j.id})}" class="color-blueLight">Modif</a></td>
                     <td>
-                        <a th:href="@{delete(id=${j.id}, page=${pageCourante}, size=${size}, mc=${mc})}"
+                        <a th:href="@{/admin/delete(id=${j.id}, page=${pageCourante}, size=${size}, mc=${mc})}"
                            class="text-warning"
                            onclick="return confirm('Etes-vous sûr de vouloir supprimer ce jeu ?')">Suppr
                         </a>
@@ -56,7 +56,7 @@
         <ul class="pagination">
             <li th:class="${pageCourante}==${status.index}?'page-item active':''"
                 th:each="page,status:${tabPages}" class="page-item">
-                <a th:href="@{index(page=${status.index}, size=${size}, mc=${mc})}"
+                <a th:href="@{/user/index(page=${status.index}, size=${size}, mc=${mc})}"
                    th:text="${status.index}" class="page-link"></a>
             </li>
         </ul>
